@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/static/style.css">
-
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"> 
         <title>FeelPhonic</title>
     </head>
     <body>
@@ -110,8 +110,38 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row-two">
-
+                    <div class="row-three">
+                        <div class="filter-text">
+                            <i class="uil uil-sliders-v-alt"></i>
+                            <span>Filter By Artist or Genre (Optional)</span>
+                        </div>
+                        <div class="filter-boxes">
+                          <!--  <i class="uil uil-music-note"></i>
+                            <i class="uil uil-user"></i>-->
+                            <div class="box2">
+                                <div class="box-header">
+                                    <i class="uil uil-user"></i>
+                                    <span>Artist</span>
+                                </div>
+                                <div class="dropdown">
+                                    <input type="text" class="search-box" placeholder="Search for artist..." id="artistSearch" oninput="filterDropdown()">
+                                    <ul class="artist-list" id="artistList">
+                                        <li>The Weeknd</li>
+                                        <li>Drake</li>
+                                        <li>Post Malone</li>
+                                        <li>Ed Sheeran</li>
+                                        <li>Adele</li>
+                                    </ul>
+                                </div>
+                                
+                            </div>
+                            <div class="box2">
+                                <div class="box-header">
+                                    <i class="uil uil-music-note"></i>
+                                    <span>Genre</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

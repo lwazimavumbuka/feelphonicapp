@@ -1,0 +1,169 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins, sans-serif';
+}
+body {
+    min-height: 100vh; /* Ensure body takes up the full height of the viewport */
+    background-color: black; /* Maintain the black background */
+    display: flex; /* Allow stacking of sections */
+    flex-direction: column;
+}
+body .index-page{
+    min-height: 100vh;
+   /* background-color: rgb(37, 37, 37);*/
+    background-color: black;
+    background-size: cover;
+    background-position: center;
+    flex: 1;
+}
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    z-index: 10;
+    /*border-bottom: 1px solid #e6e5e5;*/
+}
+.logo .logo-name{
+    font-size: 32px;
+    text-decoration: none;
+    font-weight: 700;
+    font-family: monospace;
+    background: linear-gradient(to right, #f32170, #ff6b08, #cf23cf, #eedd44);
+    -webkit-text-fill-color: transparent; 
+    -webkit-background-clip: text; 
+}
+.navbar span{
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: monospace;
+}
+.navbar a{
+    color: #ff0000;
+    font-size: 18px;
+    font-weight: 700;
+    margin-right: 30px;
+    font-family: monospace;
+}
+body .welcome-text{
+    position: absolute;
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    padding: 130px;
+}
+body h1{
+    font-size: 80px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 100;
+    width: 100%;
+}
+.banner{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    margin-top: -150px;
+    background-color: rgba(37, 37, 37, 0.594);
+
+}
+.banner .banner-text{
+    color: #fff;
+    display: flex;
+    animation: scroll-banner 15s linear infinite;
+}
+.banner .banner-text li {
+    padding-right: 70px;
+    font-size: 25px;
+    font-weight: 500;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+@keyframes scroll-banner{
+    0%{
+        transform: translateX(100%);
+    }
+    100%{
+        transform: translateX(-100%);
+    }
+}
+.choose-mood{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+.choose-mood .moods{
+    display: block;
+    width: 90%;
+    background-color: rgba(37, 37, 37, 0.436);
+    border-radius: 12px;
+    border: 1px solid rgb(37, 37, 37);
+    margin-top: 50px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.moods .text{
+    text-align: center;
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(to right, #f32170, #ff6b08, #cf23cf, #eedd44);
+    -webkit-text-fill-color: transparent; 
+    -webkit-background-clip: text; 
+}
+.moods .text h3{
+    font-size: 35px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.moods .mood-boxes{
+       
+}
+.mood-boxes .row-one, .mood-boxes .row-two{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 15px 15px;
+}
+.row-one .box, .row-two .box{
+    width: calc(98%/4 - 15px);
+    border-radius: 12px;
+    border: 1px solid rgb(37, 37, 37);
+    height: 100%;
+    align-items: center;
+    padding: 15px 20px;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    justify-content: space-around;
+    background-color: rgba(60, 59, 59, 0.187);
+
+}
+.box:hover{
+    transform: scale(1.1);
+    background-color: rgba(81, 79, 79, 0.265);
+    z-index: 2;
+}
+.box .emoji .emo{
+    font-size: 50px;
+}
+.box .mood-text{
+    padding: 15px;
+}
+.box .mood-text span {
+    font-size: 20px;
+    font-weight: 700;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}

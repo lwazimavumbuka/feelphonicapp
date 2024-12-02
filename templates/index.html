@@ -124,9 +124,14 @@
                                     <span>Artist</span>
                                 </div>
                                 <div class="dropdown">
-                                    <input type="text" class="search-box" placeholder="Search for artist..." id="artistSearch" oninput="filterDropdown()">
+                                    <input type="text" class="search-box" placeholder="Search for artist..." id="artistSearch" oninput="filterDropdown('artist')">
                                     <ul class="artist-list" id="artistList">
-                                        <li>The Weeknd</li>
+                                        <li>
+                                            <div class="image-name">
+                                                <img src="static/images/weeknd.jpg" alt="The-Weeknd">
+                                                <span class="name">The Weeknd</span>
+                                            </div>
+                                        </li>
                                         <li>Drake</li>
                                         <li>Post Malone</li>
                                         <li>Ed Sheeran</li>
@@ -140,10 +145,30 @@
                                     <i class="uil uil-music-note"></i>
                                     <span>Genre</span>
                                 </div>
+                                <div class="dropdown">
+                                    <input type="text" class="search-box" placeholder="Search for Genre..." id="genreSearch" oninput="filterDropdown('genre')">
+                                    <ul class="artist-list" id="genreList">
+                                        <li>Rap</li>
+                                        <li>R&B</li>
+                                        <li>Rock</li>
+                                        <li>House</li>
+                                        <li>Jazz</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="row-four">
+                        <div class="submit">
+                            <button onclick="showSongs()" >Get Recommendations</button>
+                        </div>
+                    </div>
                 </div>
+            </div>
+        </div>
+        <div class="songs-section" style="display: none;" id="songs-section">
+            <div class="songs-board">
+                <h1>Hi its me</h1>
             </div>
         </div>
 

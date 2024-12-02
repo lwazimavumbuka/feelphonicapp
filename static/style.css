@@ -149,6 +149,7 @@ body h1{
     position: relative;
     justify-content: space-around;
     background-color: rgba(60, 59, 59, 0.187);
+    cursor: pointer;
 
 }
 .box:hover{
@@ -225,7 +226,7 @@ body h1{
 }
 .dropdown {
     position: relative;
-    width: 100%; /* Adjust width as necessary */
+    width: 100%; 
     max-width: 470px;
     padding: 20px;
     font-family: 'Poppins, sans-serif';
@@ -241,6 +242,7 @@ body h1{
     font-size: 16px;
     outline: none;
     font-family: 'Poppins, sans-serif';
+    text-align: left;
 }
 
 .search-box::placeholder {
@@ -250,7 +252,18 @@ body h1{
 
 .artist-list {
     position: absolute;
-    top: calc(100% + 10px); /* Dropdown below input */
+    top: calc(100% -50px);
+    margin-top: -20px;
+    width: 91%;
+    background-color: rgba(37, 37, 37, 0.8);
+    border: 1px solid rgb(37, 37, 37);
+    border-radius: 5px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+   /** position: absolute;
+    top: calc(100% + 10px);
     left: 0;
     width: 100%;
     background-color: rgba(37, 37, 37, 0.8);
@@ -259,8 +272,7 @@ body h1{
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
     max-height: 200px;
     overflow-y: auto;
-    display: none; /* Hidden by default */
-    z-index: 1000;
+    z-index: 1000;*/
 }
 
 .artist-list li {
@@ -271,6 +283,26 @@ body h1{
     font-family: 'Poppins, sans-serif';
     font-size: 16px;
 }
+.artist-list li div{
+    display: flex;
+    height: 20px;
+    height: 100%;
+    align-items: center;
+    color: #fff;
+}
+.artist-list li div img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.artist-list li div span{
+    margin: 0;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: monospace;
+    color: #fff;
+}
 
 .artist-list li:hover {
     background-color: rgba(60, 59, 59, 0.5);
@@ -278,4 +310,33 @@ body h1{
 
 .artist-list li:active {
     background-color: rgba(81, 79, 79, 0.265);
+    color: #fff;
+}
+.mood-boxes .row-four{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.row-four .submit{
+    margin: 35px;
+    padding: 18px;
+    color: #fff;
+}
+.submit button{
+    color: #fff;
+    width: 300px;
+    height: 90px;
+    font-size: 20px;
+    border: 1px solid #cf23cf;
+    border-radius: 12px;
+    background-color: transparent;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    cursor: pointer;
+}
+button:hover{
+    transform: scale(1.1);
+}
+.songs-section{
+    background-color: #cf23cf;
+    padding-top: 10px;
 }

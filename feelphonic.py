@@ -1,8 +1,8 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify, request
 from dotenv import load_dotenv
 import os
 import base64
-from requests import post
+from requests import post, get
 import json
 
 
@@ -31,8 +31,43 @@ def get_token():
     token = json_result["access_token"]
     return token
 
-token = get_token()
-print(token)
+#token = get_token()
+#print(token)
+
+@feelphonic.route("/search-artists", methods=['GET'])
+def search_artist():
+    url = "https://api.spotify.com/v1/search"
+    query = request.args.get('query')
+    
+    if not query:
+        return jsonify([])
+
+    token = get_token()
+
+    headers = {
+        "Authorization": f"Bearer {token}"
+    }
+
+    params = {
+        "q" : query,
+        "type": "artist",
+        "limit" : 5
+    }
+    
+    response = get(url, headers=headers, params=params)
+
+    data = response.json()
+
+    artists = []
+
+    for artist in data["artists"]["items"]:
+        artists.append({
+            "name" : artist["name"],
+            "image" : artist["images"][0]["url"] if artist["images"] else None
+        })
+
+    return jsonify(artists)
+
 
 @feelphonic.route("/")
 def home():

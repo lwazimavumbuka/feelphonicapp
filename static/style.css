@@ -215,6 +215,7 @@ body h1{
     padding: 20px;
     position: relative;
     width: 470px;
+    margin-bottom: -20px;
 }
 .dropdown .search-box{
     width: 100%;
@@ -224,7 +225,7 @@ body h1{
     border-radius: 5px;
     background-color: rgba(60, 59, 59, 0.187);
 }
-.dropdown {
+.dropdown, .selected-artist {
     position: relative;
     width: 100%; 
     max-width: 470px;
@@ -232,7 +233,7 @@ body h1{
     font-family: 'Poppins, sans-serif';
 }
 
-.search-box {
+.search-box, .box2 .selected-artist div{
     width: 100%;
     padding: 18px;
     border: 1px solid rgb(37, 37, 37);
@@ -283,20 +284,20 @@ body h1{
     font-family: 'Poppins, sans-serif';
     font-size: 16px;
 }
-.artist-list li div{
+.artist-list li div, .selected-artist div{
     display: flex;
     height: 20px;
     height: 100%;
     align-items: center;
     color: #fff;
 }
-.artist-list li div img{
+.artist-list li div img, .selected-artist img{
     width: 50px;
     height: 50px;
     border-radius: 50%;
     margin-right: 10px;
 }
-.artist-list li div span{
+.artist-list li div span, .selected-artist span{
     margin: 0;
     font-size: 20px;
     font-weight: 500;
@@ -311,6 +312,12 @@ body h1{
 .artist-list li:active {
     background-color: rgba(81, 79, 79, 0.265);
     color: #fff;
+}
+
+.selected-artist img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
 }
 .mood-boxes .row-four{
     display: flex;

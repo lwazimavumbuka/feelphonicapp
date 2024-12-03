@@ -6,7 +6,8 @@ function showSongs(){
 
 const artistSearch = document.getElementById("artistSearch");
 const artistList = document.getElementById("artistList");
-const selectedArtist = document.getElementById("selectedArtist");
+
+let selectedArtists = []
 
 async function filterDropdown() {
     const query = artistSearch.value.trim();
@@ -30,8 +31,9 @@ async function filterDropdown() {
                     <span class="name">${artist.name}</span>
                 </div>
             `;
-            li.addEventListener('click', () => selectArtist(artist.name));
+            li.addEventListener('click', () => selectArtist(artist.name, artist.image));
             artistList.appendChild(li);
+            
         });
         artistList.style.display = 'block';
     } else {
@@ -40,7 +42,27 @@ async function filterDropdown() {
 }
 
 // Handling artist selection
-function selectArtist(artist) {
+function displayArtist(){
+    const selectedArtistDiv = document.getElementById("selectedArtist");
+    selectedArtistDiv.innerHTML = "";
+
+    selectedArtists.forEach((artist, index) =>{
+        const artistboxDiv = document.createElement("div")
+        artistboxDiv.innerHTML =`
+                    <img src="${artist.image || 'default-image-url'}" alt="${artist.name}">
+                    <span class="name">${artist.name}</span> 
+        `
+        selectedArtistDiv.appendChild(artistboxDiv);
+
+    });
+
+
+
+}
+function selectArtist(artist, image) {
+    selectedArtists.push({name: artist, image: image});
+    displayArtist();
     document.getElementById('artistSearch').value = artist;
     document.getElementById('artistList').style.display = "none";
+
 }

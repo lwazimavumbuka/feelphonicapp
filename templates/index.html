@@ -113,7 +113,7 @@
                     <div class="row-three">
                         <div class="filter-text">
                             <i class="uil uil-sliders-v-alt"></i>
-                            <span>Filter By Artist or Genre (Optional)</span>
+                            <span>Select Artist and Number of Tracks</span>
                         </div>
                         <div class="filter-boxes">
                           <!--  <i class="uil uil-music-note"></i>
@@ -135,17 +135,16 @@
                             <div class="box2">
                                 <div class="box-header">
                                     <i class="uil uil-music-note"></i>
-                                    <span>Genre</span>
+                                    <span>Number of Tracks</span>
                                 </div>
                                 <div class="dropdown">
-                                    <input type="text" class="search-box" placeholder="Search for Genre..." id="genreSearch" oninput="filterDropdown('genre')">
-                                    <ul class="artist-list" id="genreList">
-                                        <li>Rap</li>
-                                        <li>R&B</li>
-                                        <li>Rock</li>
-                                        <li>House</li>
-                                        <li>Jazz</li>
-                                    </ul>
+                                    <select type="text" class="search-box" placeholder="Search for Genre..." id="genreSearch">
+                                        <option value="5">5</option>
+                                        <option value="10">10</option>
+                                        <option value="15">15</option>
+                                        <option value="20">20</option>
+                                    </select>
+                                    
                                 </div>
                             </div>
                         </div>

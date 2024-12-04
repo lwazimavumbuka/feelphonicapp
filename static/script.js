@@ -66,3 +66,21 @@ function selectArtist(artist, image) {
     document.getElementById('artistList').style.display = "none";
 
 }
+
+//handling mood selection
+const moodBoxes = document.querySelectorAll('.box');
+
+let moodText = ""
+
+moodBoxes.forEach(box => {
+  box.addEventListener('click', () => {
+    moodBoxes.forEach(otherBox => {
+      otherBox.classList.remove('selected');
+    });
+
+    box.classList.add('selected');
+
+    moodText = box.querySelector('.mood-text').textContent;
+    console.log('Selected mood:', moodText);
+  });
+});

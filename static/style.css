@@ -152,9 +152,13 @@ body h1{
     cursor: pointer;
 
 }
+.box.selected {
+    background-color: #a21717; /* Or your desired color */
+    border-color: #333;
+  }
 .box:hover{
     transform: scale(1.1);
-    background-color: rgba(81, 79, 79, 0.265);
+    background-color: #a21717; /* Or your desired color */
     z-index: 2;
     box-shadow: 1px 1px 1px #cf23cf;
 }
@@ -251,7 +255,7 @@ body h1{
     font-style: italic;
 }
 
-.artist-list {
+.artist-list{
     position: absolute;
     top: calc(100% -50px);
     margin-top: -20px;
@@ -275,7 +279,18 @@ body h1{
     overflow-y: auto;
     z-index: 1000;*/
 }
-
+option{
+    position: absolute;
+    top: calc(100% -50px);
+    margin-top: -20px;
+    width: 91%;
+    background-color: rgba(37, 37, 37, 0.8);
+    border: 1px solid rgb(37, 37, 37);
+    border-radius: 5px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+}
 .artist-list li {
     padding: 15px;
     color: #fff;

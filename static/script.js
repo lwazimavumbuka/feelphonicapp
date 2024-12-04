@@ -1,5 +1,26 @@
-function showSongs(){
+async function showSongs(){
     document.getElementById("songs-section").style.display = "block";
+    
+    const numberOfTracks = document.getElementById("numberoftracks").value;
+    const trimmedMood = moodText.trim();
+
+
+    const query = {
+        mood: trimmedMood,
+        artists: selectArtist2,
+        numberOfTracks: parseInt(numberOfTracks),
+        ids: artistsID
+    };
+
+    const response = await fetch('/search-songs', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(query)
+    });
+    const songs = await response.json();
+
 }
 
 // Arist searchbox filter
@@ -8,6 +29,8 @@ const artistSearch = document.getElementById("artistSearch");
 const artistList = document.getElementById("artistList");
 
 let selectedArtists = []
+let selectArtist2 = []
+let artistsID = []
 
 async function filterDropdown() {
     const query = artistSearch.value.trim();
@@ -31,7 +54,7 @@ async function filterDropdown() {
                     <span class="name">${artist.name}</span>
                 </div>
             `;
-            li.addEventListener('click', () => selectArtist(artist.name, artist.image));
+            li.addEventListener('click', () => selectArtist(artist.name, artist.image, artist.id));
             artistList.appendChild(li);
             
         });
@@ -59,8 +82,10 @@ function displayArtist(){
 
 
 }
-function selectArtist(artist, image) {
+function selectArtist(artist, image, id) {
     selectedArtists.push({name: artist, image: image});
+    selectArtist2.push(artist);
+    artistsID.push(id)
     displayArtist();
     document.getElementById('artistSearch').value = artist;
     document.getElementById('artistList').style.display = "none";

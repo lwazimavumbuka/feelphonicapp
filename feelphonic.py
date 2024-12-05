@@ -112,10 +112,10 @@ def get_recomendations():
    # for track in tracks:
     #    print(track["name"], "-", track["artists"][0]["name"])
 
-    #print(f"Selected Mood: {mood}")
-    #print(f"Selected IDs: {id}")
-    #print(f"Selected Artists: {artists}")
-    #print(f"Number of Tracks: {number_of_tracks}")
+    print(f"Selected Mood: {mood}")
+    print(f"Selected IDs: {ids}")
+    print(f"Selected Artists: {artists}")
+    print(f"Number of Tracks: {number_of_tracks}")
     
     return ""
 

@@ -12,7 +12,7 @@ FeelPhonic is a web application that generates a personalized list of songs base
 <ul>
   <li><strong>Frontend</strong>: HTML, CSS and Javascript.</li>
   <li><strong>Backend</strong>: Python (Flask).</li>
-  <li><strong>API</strong>: Spotify API.</li>
-  
+  <li><strong>API</strong>: Spotify API.</li>  
 </ul>
+<h3>Screenshots 📷</h3>
 

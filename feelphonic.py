@@ -45,9 +45,6 @@ def get_token():
     token = json_result["access_token"]
     return token
 
-#token = get_token()
-#print(token)
-
 @feelphonic.route("/search-artists", methods=['GET'])
 def search_artist():
     url = "https://api.spotify.com/v1/search"
@@ -112,12 +109,11 @@ def get_recomendations():
         if not playlists:
             print("No playlists found.")
             return
+        
+        trackslist = []
 
         print("Playlists found:")
         for playlist in playlists:
-          #  print(f"- {playlist['name']} ({playlist['external_urls']['spotify']})")
-          #  print(playlist['id'])
-
             url =  "https://api.spotify.com/v1/playlists/"+playlist['id']+"/tracks"
             
             response = requests.get(url, headers=headers)
@@ -126,12 +122,19 @@ def get_recomendations():
 
             for track in tracks:
                 track_info = track['track']
-           #     print(f"  - {track_info['name']} by {', '.join(artist['name'] for artist in track_info['artists'])}")
-                moodtracks.append(track_info['id'])
-    
+                trackslist.append({
+                    "track_name": track_info['name'],
+                    "artist_name": ", ".join(artist['name'] for artist in track_info['artists']),
+                    "url": track_info['external_urls']['spotify'],
+                    "image": track_info['album']['images'][0]['url'] if track_info['album']['images'] else 'No image available'
+
+                })
+                
+    moodtracklist = []
     for x in range(number_of_tracks):
-        print(random.choice(moodtracks))
-    return ""
+        moodtracklist.append(random.choice(trackslist))
+
+    return jsonify(moodtracklist)
 
 
 

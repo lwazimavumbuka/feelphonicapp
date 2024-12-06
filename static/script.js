@@ -1,3 +1,8 @@
+document.getElementById("getrecommendations").addEventListener('click' , () => {
+    setTimeout(() =>{
+        document.getElementById("songs-section").scrollIntoView({behavior: "smooth"});
+    }, 4000);
+});
 async function showSongs(){
     document.getElementById("songs-section").style.display = "block";
     
@@ -19,8 +24,36 @@ async function showSongs(){
         },
         body: JSON.stringify(query)
     });
-    const songs = await response.json();
+    const moodsongs = await response.json();
 
+    const songBoxDiv = document.getElementById("songs-boxes");
+    songBoxDiv.innerHTML = '';
+
+    if(moodsongs.length>0){
+        moodsongs.forEach(song => {
+            const card = document.createElement('a');
+            card.href = `${song.url}`
+            card.classList.add('card'); 
+                    card.innerHTML = `
+                <div class="image-holder">
+                    <img src="${song.image || 'default-image-url.jpg'}" alt="${song.artist_name}">
+                </div>
+                <div class="song-text">
+                    <h2>${song.track_name}</h2>
+                    <p>${song.artist_name}</p>
+                </div>
+                <div class="play-icon">
+                    <div class="circle">
+                        <div class="triangle"></div>
+                    </div>
+                </div>
+            `;
+        
+            // Append the card to the parent container
+            songBoxDiv.append(card);
+        });
+        
+    }
 }
 
 // Arist searchbox filter

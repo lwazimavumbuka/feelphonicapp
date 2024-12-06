@@ -4,6 +4,9 @@ import os
 import base64
 from requests import post, get
 import json
+import random
+
+import requests
 
 
 feelphonic = Flask(__name__)
@@ -84,39 +87,50 @@ def search_artist():
 def get_recomendations():
     data = request.json
     mood = str(data.get('mood', '').strip()).lower()
-
-    if mood not in mood_to_audio:
-        print("Mood cannot be found")
-
     artists = data.get('artists', [])
     number_of_tracks = data.get('numberOfTracks', 10)
     ids = data.get('ids')
     
     token = get_token()
-    
-    #url = "https://api.spotify.com/v1/recommendations"
-    
-    #headers = {
-     #   "Authorization": f"Bearer {token}"
-   # }
 
-    #params = {
-     #  "target_valence": mood_to_audio[mood].get("valence"),
-      #  "target_energy": mood_to_audio[mood].get("energy"),
-       # "target_danceability": mood_to_audio[mood].get("danceability"),
-        #"limit": number_of_tracks,
-   # }
-    #response = get(url, headers=headers, params=params)
-  #  tracks = response.json().get("tracks", [])
-
-   # for track in tracks:
-    #    print(track["name"], "-", track["artists"][0]["name"])
-
-    print(f"Selected Mood: {mood}")
-    print(f"Selected IDs: {ids}")
-    print(f"Selected Artists: {artists}")
-    print(f"Number of Tracks: {number_of_tracks}")
+    moodtracks = []
     
+    for artistname in artists:
+        query = artistname +' '+ mood
+        print(query)
+        url = "https://api.spotify.com/v1/search?q="+query+"&type=playlist&limit=1"
+    
+        headers = {
+            "Authorization": f"Bearer {token}"
+        }
+        response = get(url, headers=headers)
+        response.raise_for_status()
+        
+        playlists = response.json().get('playlists', {}).get('items', [])
+
+
+        if not playlists:
+            print("No playlists found.")
+            return
+
+        print("Playlists found:")
+        for playlist in playlists:
+          #  print(f"- {playlist['name']} ({playlist['external_urls']['spotify']})")
+          #  print(playlist['id'])
+
+            url =  "https://api.spotify.com/v1/playlists/"+playlist['id']+"/tracks"
+            
+            response = requests.get(url, headers=headers)
+            response.raise_for_status()
+            tracks = response.json().get('items', [])
+
+            for track in tracks:
+                track_info = track['track']
+           #     print(f"  - {track_info['name']} by {', '.join(artist['name'] for artist in track_info['artists'])}")
+                moodtracks.append(track_info['id'])
+    
+    for x in range(number_of_tracks):
+        print(random.choice(moodtracks))
     return ""
 
 

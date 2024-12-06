@@ -99,14 +99,14 @@ body h1{
         transform: translateX(-100%);
     }
 }
-.choose-mood{
+.choose-mood, .songs {
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: black;
 }
-.choose-mood .moods{
+.choose-mood .moods, .songs .songs-section{
     display: block;
     width: 90%;
     background-color: rgba(37, 37, 37, 0.436);
@@ -116,7 +116,7 @@ body h1{
     padding: 20px;
     box-sizing: border-box;
 }
-.moods .text{
+.moods .text,.songs-section .songs-board .text{
     text-align: center;
     width: 100%;
     padding: 20px;
@@ -124,7 +124,7 @@ body h1{
     -webkit-text-fill-color: transparent; 
     -webkit-background-clip: text; 
 }
-.moods .text h3{
+.moods .text h3, .songs-board .text h3{
     font-size: 35px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -359,6 +359,82 @@ button:hover{
     transform: scale(1.1);
 }
 .songs-section{
-    background-color: #cf23cf;
-    padding-top: 10px;
+}
+.songs .songs-section .songs-board .songs-boxes{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px; /* Space between the boxes */
+    color: #fff;
+    justify-items: center;
+}
+.songs-boxes .card{
+    background-color: rgba(60, 59, 59, 0.187);
+    display: flex;
+    flex-direction: column;
+    width: 13rem;
+    padding: 1rem;
+    position: relative;
+    transition: all 0.4s;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.card img{
+    width: 100%;
+    height: 100%;
+    border-radius: 0.3rem;
+    object-fit: cover;
+}
+.card .song-text{
+    margin-top: 1rem;
+    line-height: 1;
+}
+.song-text h2{
+    font-size: 1.2rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.song-text p{
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    font-weight: 500;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: gray;
+}
+.card .play-icon{
+    position: absolute;
+    top: 50%;
+    right: 12%;
+    transform: translateY(10px);
+    filter: drop-shadow(0 0.5rem 1rem rgba(0, 0, 0, 0.4));
+    opacity: 0;
+    transform: all 0.4s;
+
+}
+.card:hover .play-icon{
+    opacity: 1;
+    transform: translateY(10px);
+}
+.card:hover{
+    background-color: #222;
+}
+.card .play-icon .circle{
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background-color: rgb(50, 233,50);
+    display: grid;
+    place-items: center;
+    transform: scale(0.95);
+}
+.circle .triangle{
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent; 
+    border-bottom: 18px solid black; 
+    transform: rotate(90deg);
+    margin-left: 0.2rem;
+}
+.card .play-icon:hover .circle{
+    cursor: auto;
+    transform: scale(1);
 }
